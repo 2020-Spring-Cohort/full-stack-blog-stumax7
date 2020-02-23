@@ -14,7 +14,7 @@ public class Author {
 
     private String authorName;
 
-    @OneToMany(mappedBy = "authors")
+    @OneToMany
     private Collection<Post> posts;
 
     public Author(String authorName){

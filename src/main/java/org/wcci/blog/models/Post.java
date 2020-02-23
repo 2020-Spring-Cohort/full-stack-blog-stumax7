@@ -17,20 +17,17 @@ public class Post {
     @ManyToOne
     private Category postCategory;
 
-    @ManyToMany
-    private Collection<Hashtag> hashtags;
+//    @ManyToMany
+//    private Collection<Hashtag> hashtags;
 
     @ManyToOne
     private Author postAuthor;
 
-    public Post(Long id, String postTitle, String postBody, Author postAuthor, LocalDateTime publishDate, Category postCategory, Collection<Hashtag> hashtags) {
-        this.id = id;
+    public Post(String postTitle, String postBody, Author postAuthor, Category postCategory) {
         this.postTitle = postTitle;
         this.postBody = postBody;
         this.postAuthor = postAuthor;
-        this.publishDate = publishDate;
         this.postCategory = postCategory;
-        this.hashtags = hashtags;
     }
 
     public Post(){}
@@ -51,16 +48,8 @@ public class Post {
         return postAuthor;
     }
 
-    public LocalDateTime getPublishDate() {
-        return publishDate;
-    }
-
     public Category getPostCategory() {
         return postCategory;
-    }
-
-    public Collection <Hashtag> getHashtags() {
-        return hashtags;
     }
 }
 

@@ -12,7 +12,7 @@ public class Category {
     @GeneratedValue
     private Long id;
     private String categoryName;
-    @OneToMany(mappedBy = "category")
+    @OneToMany
     private Collection<Post> posts;
 
     public Category(String categoryName){
