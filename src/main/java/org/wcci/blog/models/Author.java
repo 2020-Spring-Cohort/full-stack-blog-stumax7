@@ -17,12 +17,11 @@ public class Author {
     @OneToMany(mappedBy = "authors")
     private Collection<Post> posts;
 
-    public Author(){}
-
-    public Author(String authorName, Collection<Post> posts){
+    public Author(String authorName){
         this.authorName = authorName;
-        this.posts = posts;
     }
+
+    public Author(){}
 
     public Long getId(){
         return id;
