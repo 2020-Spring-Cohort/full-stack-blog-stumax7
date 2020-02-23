@@ -5,6 +5,6 @@ import org.wcci.blog.models.Category;
 
 import java.util.Optional;
 
-public interface CategoryRepository extends CrudRepository {
+public interface CategoryRepository extends CrudRepository <Category, Long> {
     Optional<Category> findByName(String categoryName);
 }
