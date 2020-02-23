@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +11,9 @@
     <h1><a href="home.html">Blog de Stu</a></h1>
     <h2>Categories</h2>
     <ul>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="news-and-politics.html">News and Politics</a></li>
+        <li th:each="category:${categories}"><a th:href="@{'/categories/' + ${category.categoryName}}"
+                th:text="${category.categoryName}">Category</a>
+        </li>
     </ul>
 </body>
 </html>
