@@ -1,9 +1,5 @@
 package org.wcci.blog.models;
 
-import org.wcci.blog.models.Author;
-import org.wcci.blog.models.Category;
-import org.wcci.blog.models.Hashtag;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -27,7 +23,8 @@ public class Post {
     @ManyToOne
     private Author postAuthor;
 
-    public Post(String postTitle, String postBody, Author postAuthor, LocalDateTime publishDate, Category postCategory, Collection<Hashtag> hashtags) {
+    public Post(Long id, String postTitle, String postBody, Author postAuthor, LocalDateTime publishDate, Category postCategory, Collection<Hashtag> hashtags) {
+        this.id = id;
         this.postTitle = postTitle;
         this.postBody = postBody;
         this.postAuthor = postAuthor;
@@ -37,6 +34,10 @@ public class Post {
     }
 
     public Post(){}
+
+    public Long getId(){
+        return id;
+    }
 
     public String getPostTitle() {
         return postTitle;
