@@ -39,5 +39,6 @@ public class Populator implements CommandLineRunner {
         Post virusCruise = new Post("Virus Cruise", "Well, this sucks.", hugoBrass, newsAndPolitics);
         postStorage.store(virusCruise);
         Post democrats = new Post("The Democrats", "Can they pull it off?", victoriaGelding, newsAndPolitics);
+        postStorage.store(democrats);
     }
 }

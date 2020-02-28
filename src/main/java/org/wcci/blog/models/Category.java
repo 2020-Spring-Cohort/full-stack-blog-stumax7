@@ -11,18 +11,18 @@ public class Category {
     @Id
     @GeneratedValue
     private Long id;
-    private String categoryName;
-    @OneToMany
+    private String name;
+    @OneToMany(mappedBy = "postCategory")
     private Collection<Post> posts;
 
-    public Category(String categoryName){
-        this.categoryName = categoryName;
+    public Category(String name){
+        this.name = name;
     }
 
     public Category(){}
 
-    public String getCategoryName(){
-        return categoryName;
+    public String getName(){
+        return name;
     }
 
     public Long getId(){
@@ -41,15 +41,14 @@ public class Category {
         Category category = (Category) o;
 
         if (id != null ? !id.equals(category.id) : category.id != null) return false;
-        if (categoryName != null ? !categoryName.equals(category.categoryName) : category.categoryName != null)
-            return false;
+        if (name != null ? !name.equals(category.name) : category.name != null) return false;
         return posts != null ? posts.equals(category.posts) : category.posts == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (categoryName != null ? categoryName.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (posts != null ? posts.hashCode() : 0);
         return result;
     }
@@ -58,7 +57,7 @@ public class Category {
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", categoryName='" + categoryName + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
