@@ -11,6 +11,7 @@ import org.wcci.blog.models.Author;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.PostStorage;
+import org.wcci.blog.storage.repositories.HashTagRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -21,11 +22,12 @@ public class PostControllerTest {
     private Model model;
     private PostStorage mockStorage;
     private Post testPost;
+    private HashTagRepository hashTagRepository;
 
     @BeforeEach
     void setUp(){
         mockStorage = mock(PostStorage.class);
-        underTest = new PostController(mockStorage);
+        underTest = new PostController(mockStorage, hashTagRepository);
         model = mock(Model.class);
         Category testCategory = new Category("Media");
         Author testAuthor = new Author("Hugo Brass");
