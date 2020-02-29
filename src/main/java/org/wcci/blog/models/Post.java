@@ -91,5 +91,8 @@ public class Post {
                 ", postAuthor=" + postAuthor +
                 '}';
     }
+    public void addHashTag(HashTag hashTagToAdd){
+        hashTags.add(hashTagToAdd);
+    }
 }
 
