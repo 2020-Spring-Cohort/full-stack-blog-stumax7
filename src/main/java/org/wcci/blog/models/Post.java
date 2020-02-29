@@ -3,6 +3,8 @@ package org.wcci.blog.models;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -17,8 +19,8 @@ public class Post {
     @ManyToOne
     private Category postCategory;
 
-//    @ManyToMany
-//    private Collection<Hashtag> hashtags;
+    @ManyToMany
+    private Set<HashTag> hashTags;
 
     @ManyToOne
     private Author postAuthor;
@@ -28,6 +30,7 @@ public class Post {
         this.postBody = postBody;
         this.postAuthor = postAuthor;
         this.postCategory = postCategory;
+        this.hashTags = new HashSet<>();
     }
 
     public Post(){}
@@ -50,6 +53,10 @@ public class Post {
 
     public Category getPostCategory() {
         return postCategory;
+    }
+
+    public Collection<HashTag> getHashTags() {
+        return hashTags;
     }
 
     @Override
