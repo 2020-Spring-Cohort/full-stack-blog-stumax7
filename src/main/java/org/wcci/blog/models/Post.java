@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -63,26 +64,32 @@ public class Post {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Post post = (Post) o;
-
-        if (id != null ? !id.equals(post.id) : post.id != null) return false;
-        if (postTitle != null ? !postTitle.equals(post.postTitle) : post.postTitle != null) return false;
-        if (postBody != null ? !postBody.equals(post.postBody) : post.postBody != null) return false;
-        if (publishDate != null ? !publishDate.equals(post.publishDate) : post.publishDate != null) return false;
-        if (postCategory != null ? !postCategory.equals(post.postCategory) : post.postCategory != null) return false;
-        return postAuthor != null ? postAuthor.equals(post.postAuthor) : post.postAuthor == null;
+        return Objects.equals(id, post.id) &&
+                Objects.equals(postTitle, post.postTitle) &&
+                Objects.equals(postBody, post.postBody) &&
+                Objects.equals(publishDate, post.publishDate) &&
+                Objects.equals(postCategory, post.postCategory) &&
+                Objects.equals(hashTags, post.hashTags) &&
+                Objects.equals(postAuthor, post.postAuthor);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (postTitle != null ? postTitle.hashCode() : 0);
-        result = 31 * result + (postBody != null ? postBody.hashCode() : 0);
-        result = 31 * result + (publishDate != null ? publishDate.hashCode() : 0);
-        result = 31 * result + (postCategory != null ? postCategory.hashCode() : 0);
-        result = 31 * result + (postAuthor != null ? postAuthor.hashCode() : 0);
-        return result;
+        return Objects.hash(id, postTitle, postBody, publishDate, postCategory, hashTags, postAuthor);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", postTitle='" + postTitle + '\'' +
+                ", postBody='" + postBody + '\'' +
+                ", publishDate=" + publishDate +
+                ", postCategory=" + postCategory +
+                ", hashTags=" + hashTags +
+                ", postAuthor=" + postAuthor +
+                '}';
     }
 }
 

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Author {
@@ -39,19 +40,21 @@ public class Author {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Author author = (Author) o;
-
-        if (id != null ? !id.equals(author.id) : author.id != null) return false;
-        if (authorName != null ? !authorName.equals(author.authorName) : author.authorName != null) return false;
-        return posts != null ? posts.equals(author.posts) : author.posts == null;
+        return id.equals(author.id) &&
+                authorName.equals(author.authorName);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (authorName != null ? authorName.hashCode() : 0);
-        result = 31 * result + (posts != null ? posts.hashCode() : 0);
-        return result;
+        return Objects.hash(id, authorName);
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", authorName='" + authorName + '\'' +
+                '}';
     }
 }

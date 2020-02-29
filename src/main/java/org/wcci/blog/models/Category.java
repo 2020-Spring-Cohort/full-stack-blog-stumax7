@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Category {
@@ -37,20 +38,14 @@ public class Category {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Category category = (Category) o;
-
-        if (id != null ? !id.equals(category.id) : category.id != null) return false;
-        if (name != null ? !name.equals(category.name) : category.name != null) return false;
-        return posts != null ? posts.equals(category.posts) : category.posts == null;
+        return id.equals(category.id) &&
+                name.equals(category.name);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (posts != null ? posts.hashCode() : 0);
-        return result;
+        return Objects.hash(id, name);
     }
 
     @Override
