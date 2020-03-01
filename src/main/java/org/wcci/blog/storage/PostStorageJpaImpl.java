@@ -1,8 +1,10 @@
 package org.wcci.blog.storage;
 
+import org.springframework.stereotype.Service;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.repositories.PostRepository;
 
+@Service
 public class PostStorageJpaImpl  implements PostStorage {
     private PostRepository postRepository;
 
