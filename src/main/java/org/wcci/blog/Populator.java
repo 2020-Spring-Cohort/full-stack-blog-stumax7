@@ -1,11 +1,13 @@
 package org.wcci.blog;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 import org.wcci.blog.models.Author;
 import org.wcci.blog.models.Category;
 import org.wcci.blog.models.Post;
 import org.wcci.blog.storage.*;
 
+@Component
 public class Populator implements CommandLineRunner {
 
     private CategoryStorage categoryStorage;

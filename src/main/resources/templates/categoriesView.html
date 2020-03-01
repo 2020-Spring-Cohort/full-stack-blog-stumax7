@@ -11,8 +11,8 @@ xmlns:th="http://www.thymeleaf.org">
     <h1><a href="index.html">Blog de Stu</a></h1>
     <h2>Categories</h2>
     <ul>
-        <li th:each="category:${categories}"><a th:href="@{'/category/' + ${category.name}}"
-                th:text="${category.name}">Category</a>
+        <li th:each="category:${categories}"><a th:href="@{'/category/' + ${category.id}}"
+                th:text="${category.id}">Category</a>
         </li>
     </ul>
 </body>
