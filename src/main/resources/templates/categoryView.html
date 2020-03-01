@@ -8,8 +8,8 @@
     <title>Media</title>
 </head>
 <body>
-    <h1><a href="index.html">Blog de Stu</a></h1>
-    <h2><a href="categories.html" th:href="@{'/categories'}">Categories</a></h2>
+    <h1><a href="./index">Blog de Stu</a></h1>
+    <h2><a href="./categories">Categories</a></h2>
     <h3 th:text="${category.name}">[Category Name]</h3>
     <ul>
         <li th:each="post:${category.posts}"><a th:href="@{'/posts/'+ ${post.id}}"

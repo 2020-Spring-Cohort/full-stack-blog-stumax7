@@ -8,35 +8,35 @@ import org.wcci.blog.storage.*;
 
 public class Populator implements CommandLineRunner {
 
-    private CategoryStorageJpaImpl categoryStorageJpaImpl;
-    private AuthorStorageJpaImpl authorStorageJpaImpl;
-    private PostStorage postStorageJpaImpl;
+    private CategoryStorage categoryStorage;
+    private AuthorStorage authorStorage;
+    private PostStorage postStorage;
 
-    public Populator(CategoryStorageJpaImpl categoryStorageJpaImpl, AuthorStorageJpaImpl authorStorageJpaImpl, PostStorageJpaImpl postStorageJpaImpl){
-        this.categoryStorageJpaImpl = categoryStorageJpaImpl;
-        this.authorStorageJpaImpl = authorStorageJpaImpl;
-        this.postStorageJpaImpl = postStorageJpaImpl;
+    public Populator(CategoryStorage categoryStorage, AuthorStorage authorStorage, PostStorage postStorage){
+        this.categoryStorage = categoryStorage;
+        this.authorStorage = authorStorage;
+        this.postStorage = postStorage;
     }
 
     @Override
     public void run(String... args) {
         Category media = new Category("Media");
-        categoryStorageJpaImpl.store(media);
+        categoryStorage.store(media);
         Category newsAndPolitics = new Category("News and Politics");
-        categoryStorageJpaImpl.store(newsAndPolitics);
+        categoryStorage.store(newsAndPolitics);
 
         Author hugoBrass = new Author("Hugo Brass");
-        authorStorageJpaImpl.store(hugoBrass);
+        authorStorage.store(hugoBrass);
         Author victoriaGelding = new Author("Victoria Gelding");
-        authorStorageJpaImpl.store(victoriaGelding);
+        authorStorage.store(victoriaGelding);
 
         Post ripPopSmoke = new Post("R.I.P. Pop Smoke", "What a tragedy!", hugoBrass,  media);
-        postStorageJpaImpl.store(ripPopSmoke);
+        postStorage.store(ripPopSmoke);
         Post grimes = new Post("Grimes - Miss Anthropocene", "This concept album has some issues.", victoriaGelding, media);
-        postStorageJpaImpl.store(grimes);
+        postStorage.store(grimes);
         Post virusCruise = new Post("Virus Cruise", "Well, this sucks.", hugoBrass, newsAndPolitics);
-        postStorageJpaImpl.store(virusCruise);
+        postStorage.store(virusCruise);
         Post democrats = new Post("The Democrats", "Can they pull it off?", victoriaGelding, newsAndPolitics);
-        postStorageJpaImpl.store(democrats);
+        postStorage.store(democrats);
     }
 }
