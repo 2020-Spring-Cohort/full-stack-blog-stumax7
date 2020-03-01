@@ -20,9 +20,6 @@ public class Post {
     @ManyToOne
     private Category postCategory;
 
-    @ManyToMany
-    private Set<HashTag> hashTags;
-
     @ManyToOne
     private Author postAuthor;
 
@@ -31,7 +28,6 @@ public class Post {
         this.postBody = postBody;
         this.postAuthor = postAuthor;
         this.postCategory = postCategory;
-        this.hashTags = new HashSet<>();
     }
 
     public Post(){}
@@ -56,10 +52,6 @@ public class Post {
         return postCategory;
     }
 
-    public Collection<HashTag> getHashTags() {
-        return hashTags;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,13 +62,12 @@ public class Post {
                 Objects.equals(postBody, post.postBody) &&
                 Objects.equals(publishDate, post.publishDate) &&
                 Objects.equals(postCategory, post.postCategory) &&
-                Objects.equals(hashTags, post.hashTags) &&
                 Objects.equals(postAuthor, post.postAuthor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, postTitle, postBody, publishDate, postCategory, hashTags, postAuthor);
+        return Objects.hash(id, postTitle, postBody, publishDate, postCategory, postAuthor);
     }
 
     @Override
@@ -87,12 +78,8 @@ public class Post {
                 ", postBody='" + postBody + '\'' +
                 ", publishDate=" + publishDate +
                 ", postCategory=" + postCategory +
-                ", hashTags=" + hashTags +
                 ", postAuthor=" + postAuthor +
                 '}';
-    }
-    public void addHashTag(HashTag hashTagToAdd){
-        hashTags.add(hashTagToAdd);
     }
 }
 
